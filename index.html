@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAazi Solutions — AI That Solves What Others Can't</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+    }
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(139,92,246,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,92,246,0.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    @keyframes blob {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%       { transform: translate(30px,-50px) scale(1.1); }
+      66%       { transform: translate(-20px,20px) scale(0.9); }
+    }
+    .animate-blob { animation: blob 8s infinite ease-in-out; }
+    .delay-2s { animation-delay: 2s; }
+    .delay-4s { animation-delay: 4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up       { animation: fadeUp 0.8s ease forwards; }
+    .fade-up.d1    { animation-delay: 0.1s; opacity: 0; }
+    .fade-up.d2    { animation-delay: 0.25s; opacity: 0; }
+    .fade-up.d3    { animation-delay: 0.4s; opacity: 0; }
+    .fade-up.d4    { animation-delay: 0.55s; opacity: 0; }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+    .pulse-dot { animation: pulseDot 1.6s ease-in-out infinite; }
+
+    .card-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-lift:hover { transform: translateY(-8px); }
+
+    html { scroll-behavior: smooth; }
+
+    .mob-menu { display: none; }
+    .mob-menu.open { display: block; }
+
+    /* scroll-reveal hidden state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+  <!-- ── NAV ─────────────────────────────────────────── -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-9 h-9 gradient-bg rounded-xl flex items-center justify-center shadow-lg">
+          <span class="text-white font-black text-base leading-none">K</span>
+        </div>
+        <span class="font-black text-xl text-gray-900">KAazi <span class="gradient-text">Solutions</span></span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about"      class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">About</a>
+        <a href="#services"   class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Services</a>
+        <a href="#casestudy"  class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Case Study</a>
+        <a href="#process"    class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Process</a>
+      </div>
+
+      <a href="#contact" class="hidden md:inline-flex gradient-bg text-white px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-md">
+        Get Started →
+      </a>
+
+      <!-- Hamburger -->
+      <button onclick="document.getElementById('mobmenu').classList.toggle('open')" class="md:hidden text-gray-700 p-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobmenu" class="mob-menu md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-3">
+      <a href="#about"     class="block text-gray-700 font-medium py-1.5" onclick="this.closest('.mob-menu').classList.remove('open')">About</a>
+      <a href="#services"  class="block text-gray-700 font-medium py-1.5" onclick="this.closest('.mob-menu').classList.remove('open')">Services</a>
+      <a href="#casestudy" class="block text-gray-700 font-medium py-1.5" onclick="this.closest('.mob-menu').classList.remove('open')">Case Study</a>
+      <a href="#process"   class="block text-gray-700 font-medium py-1.5" onclick="this.closest('.mob-menu').classList.remove('open')">Process</a>
+      <a href="#contact"   class="block gradient-bg text-white px-5 py-3 rounded-full font-bold text-center mt-2" onclick="this.closest('.mob-menu').classList.remove('open')">Get Started →</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern pt-24 pb-16">
+    <!-- Ambient blobs -->
+    <div class="absolute -top-16 -left-32 w-[500px] h-[500px] bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob"></div>
+    <div class="absolute top-1/3 -right-32  w-[500px] h-[500px] bg-pink-300   rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob delay-2s"></div>
+    <div class="absolute bottom-0  left-1/3  w-[500px] h-[500px] bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob delay-4s"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Status badge -->
+      <div class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 mb-8 shadow-sm fade-up">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot"></span>
+        <span class="text-sm font-semibold text-gray-700">Actively solving the world's toughest tech problems</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-[1.05] mb-6 fade-up d1">
+        We Find Problems.<br/>
+        <span class="gradient-text">AI Builds the Fix.</span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed fade-up d2">
+        KAazi Solutions hunts down the friction points breaking today's tech world — then builds intelligent AI agents that solve them at scale.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 fade-up d3">
+        <a href="#casestudy" class="gradient-bg text-white px-8 py-4 rounded-full text-base font-bold hover:opacity-90 transition-all hover:scale-105 shadow-xl">
+          See Our Work →
+        </a>
+        <a href="#contact" class="bg-white border-2 border-gray-200 text-gray-800 px-8 py-4 rounded-full text-base font-bold hover:border-purple-400 transition-all hover:scale-105">
+          Work With Us
+        </a>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 fade-up d4">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-black gradient-text">2,000+</div>
+          <div class="text-gray-400 text-sm font-medium mt-1">AI Servers Networked</div>
+        </div>
+        <div class="w-px h-10 bg-gray-200 hidden md:block"></div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-black gradient-text">100%</div>
+          <div class="text-gray-400 text-sm font-medium mt-1">AI-Powered Solutions</div>
+        </div>
+        <div class="w-px h-10 bg-gray-200 hidden md:block"></div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-black gradient-text">0 → 1</div>
+          <div class="text-gray-400 text-sm font-medium mt-1">Problem to Production</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400">
+      <span class="text-xs font-medium tracking-wide uppercase">Scroll</span>
+      <div class="w-5 h-8 border-2 border-gray-300 rounded-full flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ──────────────────────────────────────────── -->
+  <section id="about" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- Left copy -->
+        <div class="reveal">
+          <span class="gradient-text font-bold text-xs uppercase tracking-widest">About KAazi</span>
+          <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-6 leading-tight">
+            Tech problems don't scare us.<br/>They <span class="gradient-text">inspire us.</span>
+          </h2>
+          <p class="text-gray-500 text-lg leading-relaxed mb-5">
+            At KAazi Solutions, we don't wait for someone to bring us a problem — we go hunting for them. We scan today's technology landscape for the friction, the bottlenecks, and the inefficiencies that are holding the future back.
+          </p>
+          <p class="text-gray-500 text-lg leading-relaxed mb-8">
+            Then we build AI agents that don't just solve the problem once — they learn, adapt, and keep solving it at scale, without human intervention.
+          </p>
+          <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <p class="text-gray-700 font-semibold leading-relaxed">Built for scale. Designed with intelligence. Deployed with precision.</p>
+          </div>
+        </div>
+
+        <!-- Right feature cards -->
+        <div class="grid grid-cols-2 gap-4 reveal">
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm card-lift">
+            <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1.5">Problem Discovery</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">We identify where technology fails — before it costs you</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm card-lift mt-8">
+            <div class="w-10 h-10 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1.5">AI Architecture</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Custom agent systems engineered from the ground up</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm card-lift">
+            <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1.5">Agent Deployment</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">From prototype to production at any scale</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm card-lift mt-8">
+            <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1.5">Continuous Learning</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Our agents adapt and improve with every data point</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────────────────── -->
+  <section id="services" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="gradient-text font-bold text-xs uppercase tracking-widest">What We Do</span>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-4">Our Core Services</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">From discovery to deployment — the full AI solution lifecycle</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="group bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-orange-300 card-lift shadow-sm reveal">
+          <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 mb-3">Tech Problem Research</h3>
+          <p class="text-gray-400 leading-relaxed mb-6">We analyze industries for the most painful technical bottlenecks — and map exactly where AI creates maximum leverage.</p>
+          <span class="text-orange-500 font-semibold text-sm">Research & Analysis</span>
+        </div>
+
+        <!-- Card 2 (featured) -->
+        <div class="group bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-3xl p-8 card-lift shadow-2xl reveal">
+          <div class="w-14 h-14 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">AI Agent Engineering</h3>
+          <p class="text-white/80 leading-relaxed mb-6">We build custom intelligent agent systems using our proprietary Agent Box framework — capable of learning, deciding, and acting autonomously at scale.</p>
+          <span class="text-white/90 font-semibold text-sm">Core Offering ✦</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-purple-300 card-lift shadow-sm reveal">
+          <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 mb-3">Infrastructure & Scale</h3>
+          <p class="text-gray-400 leading-relaxed mb-6">We deploy and manage AI infrastructure at enterprise scale — from networking thousands of AI servers to optimizing distributed systems.</p>
+          <span class="text-purple-500 font-semibold text-sm">Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE STUDY ─────────────────────────────────────── -->
+  <section id="casestudy" class="py-28 bg-gray-950 relative overflow-hidden">
+    <div class="absolute inset-0 grid-pattern opacity-[0.15]"></div>
+    <div class="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-purple-500/20 to-transparent"></div>
+
+    <!-- Top blobs -->
+    <div class="absolute -top-24 -left-24 w-80 h-80 bg-orange-600 rounded-full filter blur-3xl opacity-10"></div>
+    <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-purple-600 rounded-full filter blur-3xl opacity-10"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="text-orange-400 font-bold text-xs uppercase tracking-widest">Featured Case Study</span>
+        <h2 class="text-4xl md:text-6xl font-black text-white mt-3 mb-5 leading-tight">
+          Networking 2,000+ AI Servers<br/>with <span class="gradient-text">Intelligent Agents</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          When a client faced a massive AI infrastructure bottleneck, KAazi built an autonomous agent system that rewired the entire network — and keeps it optimized around the clock.
+        </p>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-16 reveal">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+          <div class="text-3xl md:text-4xl font-black gradient-text mb-2">2,000+</div>
+          <div class="text-gray-400 text-sm font-medium">AI Servers Managed</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+          <div class="text-3xl md:text-4xl font-black gradient-text mb-2">99.9%</div>
+          <div class="text-gray-400 text-sm font-medium">Network Uptime</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+          <div class="text-3xl md:text-4xl font-black gradient-text mb-2">10×</div>
+          <div class="text-gray-400 text-sm font-medium">Throughput Improvement</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+          <div class="text-3xl md:text-4xl font-black gradient-text mb-2">Self‑Heal</div>
+          <div class="text-gray-400 text-sm font-medium">Auto-Recovery Network</div>
+        </div>
+      </div>
+
+      <!-- Story steps -->
+      <div class="grid md:grid-cols-3 gap-8 mb-14 reveal">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 gradient-bg rounded-full flex items-center justify-center text-white font-black text-sm shrink-0">1</div>
+            <h3 class="text-white font-bold text-lg">Identified the Problem</h3>
+          </div>
+          <p class="text-gray-400 leading-relaxed pl-12">
+            Traditional networking tools couldn't handle dynamic routing across 2,000+ heterogeneous AI compute nodes. Latency spikes and cascading failures were crippling operations.
+          </p>
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 gradient-bg rounded-full flex items-center justify-center text-white font-black text-sm shrink-0">2</div>
+            <h3 class="text-white font-bold text-lg">Deployed Agent Box</h3>
+          </div>
+          <p class="text-gray-400 leading-relaxed pl-12">
+            We launched our proprietary Agent Box — a coordinated swarm of AI agents that collectively monitor, learn traffic patterns, predict load, and auto-route across the server network in real time.
+          </p>
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 gradient-bg rounded-full flex items-center justify-center text-white font-black text-sm shrink-0">3</div>
+            <h3 class="text-white font-bold text-lg">Learns & Self-Heals</h3>
+          </div>
+          <p class="text-gray-400 leading-relaxed pl-12">
+            The system continuously learns optimal routing paths, auto-heals on node failure, and adapts to shifting workloads — entirely without human intervention.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tech tags -->
+      <div class="flex flex-wrap gap-3 justify-center reveal">
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">AI Learning</span>
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">Agent Box Framework</span>
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">Distributed Networking</span>
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">Intelligent Auto-Routing</span>
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">Self-Healing Systems</span>
+        <span class="bg-white/10 border border-white/15 text-gray-300 px-4 py-2 rounded-full text-sm font-medium">Real-Time Monitoring</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ─────────────────────────────────────────── -->
+  <section id="process" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="gradient-text font-bold text-xs uppercase tracking-widest">Our Process</span>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-4">How KAazi Works</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">A repeatable, proven process from raw problem to deployed AI solution</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 relative reveal">
+        <!-- connector -->
+        <div class="hidden md:block absolute h-0.5 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500"
+             style="top: 32px; left: calc(12.5% + 8px); right: calc(12.5% + 8px);"></div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5 text-white text-2xl font-black relative z-10 shadow-lg">01</div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Research</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">We go deep into your industry to surface the problems worth building for</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5 text-white text-2xl font-black relative z-10 shadow-lg">02</div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Design</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">We architect a custom AI agent system tailored to the exact problem</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5 text-white text-2xl font-black relative z-10 shadow-lg">03</div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Build</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Our engineers build and train intelligent agents using the Agent Box framework</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-5 text-white text-2xl font-black relative z-10 shadow-lg">04</div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Deploy & Scale</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">We launch, monitor, and keep improving — at any scale, continuously</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA / CONTACT ──────────────────────────────────── -->
+  <section id="contact" class="py-28 relative overflow-hidden">
+    <div class="absolute inset-0 gradient-bg"></div>
+    <div class="absolute inset-0 grid-pattern opacity-20"></div>
+    <div class="absolute -top-24 -right-24 w-80 h-80 bg-white/10 rounded-full filter blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-white/10 rounded-full filter blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+      <span class="text-white/60 font-bold text-xs uppercase tracking-widest">Ready to solve something?</span>
+      <h2 class="text-4xl md:text-6xl font-black text-white mt-4 mb-5 leading-tight">
+        Your biggest tech problem<br/>is our next project.
+      </h2>
+      <p class="text-white/75 text-lg mb-10 max-w-xl mx-auto">
+        Tell us what's breaking. We'll build the AI that fixes it — and keeps it fixed.
+      </p>
+
+      <!-- Contact form -->
+      <form id="contact-form" onsubmit="handleSubmit(event)"
+            class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 text-left max-w-lg mx-auto">
+        <div class="space-y-5">
+          <div>
+            <label class="block text-white/80 text-sm font-semibold mb-2">Your Name</label>
+            <input type="text" placeholder="Jane Smith" required
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-white/35 rounded-xl px-4 py-3 outline-none focus:border-white/60 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-white/80 text-sm font-semibold mb-2">Email Address</label>
+            <input type="email" placeholder="jane@company.com" required
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-white/35 rounded-xl px-4 py-3 outline-none focus:border-white/60 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-white/80 text-sm font-semibold mb-2">Describe Your Problem</label>
+            <textarea rows="4" placeholder="Tell us about the tech challenge you're facing..." required
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-white/35 rounded-xl px-4 py-3 outline-none focus:border-white/60 transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" id="submit-btn"
+            class="w-full bg-white text-gray-900 font-black py-4 rounded-xl text-base hover:bg-gray-100 transition-colors">
+            Let's Solve It Together →
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="bg-gray-950 py-10 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+          <span class="text-white font-black text-sm">K</span>
+        </div>
+        <span class="font-black text-xl text-white">KAazi <span class="gradient-text">Solutions</span></span>
+      </div>
+
+      <div class="flex items-center gap-8 text-gray-500 text-sm">
+        <a href="#about"     class="hover:text-white transition-colors">About</a>
+        <a href="#services"  class="hover:text-white transition-colors">Services</a>
+        <a href="#casestudy" class="hover:text-white transition-colors">Case Study</a>
+        <a href="#contact"   class="hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <p class="text-gray-600 text-sm">© 2025 KAazi Solutions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 20);
+    });
+
+    // Scroll-reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = '✓ Message sent — we\'ll be in touch soon!';
+      btn.classList.replace('bg-white', 'bg-emerald-400');
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
