@@ -77,6 +77,10 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* FAQ accordion — hide native disclosure marker so we can use our own chevron */
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
   </style>
 </head>
 <body class="bg-white overflow-x-hidden">
@@ -99,6 +103,7 @@
         <a href="#services"   class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Services</a>
         <a href="#casestudy"  class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Case Study</a>
         <a href="#process"    class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Process</a>
+        <a href="#faq"        class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">FAQ</a>
       </div>
 
       <a href="#contact" class="hidden md:inline-flex gradient-bg text-white px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-md">
@@ -124,6 +129,7 @@
       <a href="#services"  class="block text-gray-700 font-medium py-1.5">Services</a>
       <a href="#casestudy" class="block text-gray-700 font-medium py-1.5">Case Study</a>
       <a href="#process"   class="block text-gray-700 font-medium py-1.5">Process</a>
+      <a href="#faq"       class="block text-gray-700 font-medium py-1.5">FAQ</a>
       <a href="#contact"   class="block gradient-bg text-white px-5 py-3 rounded-full font-bold text-center mt-2">Get Started →</a>
     </div>
   </nav>
@@ -264,8 +270,61 @@
     </div>
   </section>
 
+  <!-- ── WHY US ─────────────────────────────────────────── -->
+  <section id="whyus" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="gradient-text font-bold text-xs uppercase tracking-widest">Why Choose Us</span>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-4">More than agency. More than AI.</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">A different way of building — and the reasons our clients stay.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-7 border-2 border-gray-100 hover:border-orange-300 card-lift shadow-sm reveal">
+          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Specialists, Not Generalists</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">We don't dabble in AI — it's all we do. Deep stack, deep expertise, no learning curve on your dime.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 border-2 border-gray-100 hover:border-pink-300 card-lift shadow-sm reveal">
+          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Production from Day One</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">No slideware, no demos that don't scale. Everything we build hits prod, handles real traffic, survives real users.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 border-2 border-gray-100 hover:border-purple-300 card-lift shadow-sm reveal">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Results Over Activity</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Success is the problem solved, not hours logged. We're measured on what changes for you — not on what we shipped.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 border-2 border-gray-100 hover:border-blue-300 card-lift shadow-sm reveal">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </div>
+          <h3 class="font-black text-gray-900 text-lg mb-2">Always Improving</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Our agents learn from every interaction. The system you ship today is smarter six months from now — without lifting a finger.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── SERVICES ──────────────────────────────────────── -->
-  <section id="services" class="py-24 bg-white">
+  <section id="services" class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
         <span class="gradient-text font-bold text-xs uppercase tracking-widest">What We Do</span>
@@ -470,6 +529,79 @@
           <h3 class="font-black text-gray-900 text-lg mb-2">Deploy & Scale</h3>
           <p class="text-gray-400 text-sm leading-relaxed">We launch, monitor, and keep improving — at any scale, continuously</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────────────────── -->
+  <section id="faq" class="py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="gradient-text font-bold text-xs uppercase tracking-widest">FAQ</span>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-4">Questions, answered.</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">The stuff you'd ask on the first call — addressed up front.</p>
+      </div>
+
+      <div class="space-y-4 reveal">
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>What kinds of problems do you typically solve?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">Mostly the kind that scale poorly with humans — repetitive ops, complex routing, decisions made at high volume. Anywhere a smart system outperforms a team by an order of magnitude is where we live.</p>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>How long does a typical engagement take?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">Discovery runs 1–2 weeks. Build typically takes 4–12 weeks depending on scope. Most clients see their first agent in production within 90 days of the first conversation.</p>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>Do we need to know AI to work with you?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">No. We translate. You bring the problem and the business context; we bring the technical strategy and explain every step in plain language. Most of our clients aren't AI engineers — they're operators trying to remove friction from the way work actually gets done.</p>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>How do you handle data privacy and security?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">Our agents can run in your infrastructure or in dedicated environments — your data never leaves your control. We don't train on your data, and we sign your NDA, not ours.</p>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>What if AI isn't actually the right answer?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">Then we say so. Discovery is paid but small, and if we can't see a clear path to outcome, we won't take the build. We're not in business to ship things we don't believe will work.</p>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-2xl px-6 py-5 hover:border-purple-300 transition-colors">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900">
+            <span>Can you integrate with our existing systems?</span>
+            <svg class="w-5 h-5 text-gray-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <p class="text-gray-500 leading-relaxed mt-4">Almost always yes. We've built into Salesforce, SAP, legacy on-prem databases, modern SaaS, custom APIs — pretty much everything short of mainframes. The integration is part of the engineering, not a separate scope.</p>
+        </details>
       </div>
     </div>
   </section>
