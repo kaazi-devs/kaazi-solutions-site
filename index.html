@@ -449,8 +449,17 @@
       </p>
 
       <!-- Contact form -->
-      <form id="contact-form" onsubmit="handleSubmit(event)"
+      <form id="contact-form"
+            action="https://formsubmit.co/ajax/sales@kaazidevs.com"
+            method="POST"
             class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 text-left max-w-lg mx-auto">
+        <!-- Formsubmit config -->
+        <input type="hidden" name="_subject" value="New inquiry from kaazidevs.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="true" />
+        <!-- Honeypot — bots fill this, humans don't see it -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
         <div class="space-y-5">
           <div>
             <label for="contact-name" class="block text-white/80 text-sm font-semibold mb-2">Your Name</label>
@@ -515,14 +524,37 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Form submit
-    function handleSubmit(e) {
+    // Contact form — submits to Formsubmit via AJAX, keeps inline UX
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      const form = e.target;
       const btn = document.getElementById('submit-btn');
-      btn.textContent = '✓ Message sent — we\'ll be in touch soon!';
-      btn.classList.replace('bg-white', 'bg-emerald-400');
+      const originalText = btn.textContent;
+
+      btn.textContent = 'Sending…';
       btn.disabled = true;
-    }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        });
+        if (!res.ok) throw new Error('Submission rejected');
+
+        btn.textContent = '✓ Message sent — we\'ll be in touch soon!';
+        btn.classList.replace('bg-white', 'bg-emerald-400');
+        form.reset();
+      } catch (err) {
+        btn.textContent = '✗ Send failed — email sales@kaazidevs.com';
+        btn.classList.replace('bg-white', 'bg-red-400');
+        btn.disabled = false;
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.replace('bg-red-400', 'bg-white');
+        }, 5000);
+      }
+    });
 
     // Mobile menu — toggle + a11y state sync
     const mobToggle = document.getElementById('mob-toggle');
