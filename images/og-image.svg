@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="white" stroke-width="1" fill="none">
+    <path d="M0 60h1200M0 120h1200M0 180h1200M0 240h1200M0 300h1200M0 360h1200M0 420h1200M0 480h1200M0 540h1200"/>
+    <path d="M60 0v630M120 0v630M180 0v630M240 0v630M300 0v630M360 0v630M420 0v630M480 0v630M540 0v630M600 0v630M660 0v630M720 0v630M780 0v630M840 0v630M900 0v630M960 0v630M1020 0v630M1080 0v630M1140 0v630"/>
+  </g>
+  <rect x="90" y="80" width="100" height="100" rx="22" fill="white" fill-opacity="0.2"/>
+  <text x="140" y="160" font-family="system-ui, -apple-system, 'Inter', sans-serif" font-size="76" font-weight="900" fill="white" text-anchor="middle">K</text>
+  <text x="220" y="148" font-family="system-ui, -apple-system, 'Inter', sans-serif" font-size="44" font-weight="900" fill="white">KAazi Solutions</text>
+  <text x="90" y="340" font-family="system-ui, -apple-system, 'Inter', sans-serif" font-size="92" font-weight="900" fill="white">We Find Problems.</text>
+  <text x="90" y="440" font-family="system-ui, -apple-system, 'Inter', sans-serif" font-size="92" font-weight="900" fill="white">AI Builds the Fix.</text>
+  <text x="90" y="550" font-family="system-ui, -apple-system, 'Inter', sans-serif" font-size="36" font-weight="600" fill="rgba(255,255,255,0.85)">kaazidevs.com</text>
+</svg>
