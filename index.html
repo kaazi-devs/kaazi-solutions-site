@@ -95,7 +95,41 @@
     }
     .card-lift:hover { transform: translateY(-8px); }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+    /* Keyboard skip-link — hidden until focused */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--brand-purple);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+      z-index: 100;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 1rem; outline: none; }
+
+    /* Consistent focus indicator for keyboard users (mouse clicks not affected) */
+    :focus-visible {
+      outline: 2px solid var(--brand-purple);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
 
     .mob-menu { display: none; }
     .mob-menu.open { display: block; }
@@ -144,6 +178,9 @@
 </head>
 <body class="bg-white overflow-x-hidden">
 
+  <!-- Skip to content for keyboard users -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <!-- ── NAV ─────────────────────────────────────────── -->
   <nav id="navbar" class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-shadow">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -157,7 +194,7 @@
       </a>
 
       <!-- Desktop links -->
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden md:flex items-center gap-5 lg:gap-8">
         <a href="#about"      class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">About</a>
         <a href="#services"   class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Services</a>
         <a href="#casestudy"  class="text-gray-500 hover:text-gray-900 font-medium transition-colors text-sm">Case Study</a>
@@ -196,7 +233,7 @@
   </nav>
 
   <!-- ── HERO ──────────────────────────────────────────── -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern pt-24 pb-16">
+  <section id="main" class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern pt-24 pb-16">
     <!-- Ambient blobs -->
     <div class="absolute -top-16 -left-32 w-[500px] h-[500px] bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob"></div>
     <div class="absolute top-1/3 -right-32  w-[500px] h-[500px] bg-pink-300   rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob delay-2s"></div>
@@ -393,7 +430,7 @@
         <p class="text-gray-400 text-lg max-w-xl mx-auto">From discovery to deployment — the full AI solution lifecycle</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card 1 -->
         <div class="group bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-orange-300 card-lift shadow-sm reveal flex flex-col">
           <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
@@ -580,9 +617,9 @@
         <p class="text-gray-400 text-lg max-w-xl mx-auto">A repeatable, proven process from raw problem to deployed AI solution</p>
       </div>
 
-      <div class="grid md:grid-cols-4 gap-8 relative reveal">
-        <!-- connector -->
-        <div class="hidden md:block absolute h-0.5 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500"
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative reveal">
+        <!-- connector (only on lg+ where all 4 steps are in one row) -->
+        <div class="hidden lg:block absolute h-0.5 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500"
              style="top: 32px; left: calc(12.5% + 8px); right: calc(12.5% + 8px);"></div>
 
         <div class="text-center">
@@ -625,7 +662,7 @@
         <!-- CEO -->
         <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl card-lift reveal text-center">
           <div class="w-24 h-24 mx-auto mb-5 rounded-full overflow-hidden shadow-lg ring-2 ring-white">
-            <img src="images/ayobami.jpg" alt="Ayobami Awoyinfa" class="w-full h-full object-cover" loading="lazy" />
+            <img src="images/ayobami.jpg" alt="Ayobami Awoyinfa" width="96" height="96" class="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
           <h3 class="text-xl font-black text-gray-900 mb-1">Ayobami Awoyinfa</h3>
           <span class="gradient-text font-bold text-xs uppercase tracking-widest">Chief Executive Officer</span>
