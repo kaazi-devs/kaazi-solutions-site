@@ -824,23 +824,65 @@
   </section>
 
   <!-- ── FOOTER ─────────────────────────────────────────── -->
-  <footer class="bg-gray-950 py-10 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-          <span class="text-white font-black text-sm">K</span>
+  <footer class="bg-gray-950 pt-16 pb-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Main footer grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand + tagline + social -->
+        <div class="col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-9 h-9 gradient-bg rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-black text-base leading-none">K</span>
+            </div>
+            <span class="font-black text-xl text-white">KAazi <span class="gradient-text">Solutions</span></span>
+          </div>
+          <p class="text-gray-400 max-w-sm leading-relaxed mb-6">
+            We find the friction points breaking today's tech world — then build intelligent AI agents that solve them at scale.
+          </p>
+          <!-- Social — TODO: replace # with real URLs -->
+          <div class="flex items-center gap-3">
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.3 18v-9H5.7v9h2.6zM7 7.7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.3 18v-4.9c0-2.5-1.3-3.6-3.1-3.6-1.5 0-2.1.8-2.5 1.4V9h-2.6v9h2.6v-4.9c0-.2 0-.5.1-.6.2-.5.7-1 1.5-1 1.1 0 1.5.8 1.5 2v4.5h2.5z"/></svg>
+            </a>
+            <a href="#" aria-label="X (Twitter)" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+            </a>
+            <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.9 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0012 .3"/></svg>
+            </a>
+          </div>
         </div>
-        <span class="font-black text-xl text-white">KAazi <span class="gradient-text">Solutions</span></span>
+
+        <!-- Company -->
+        <div>
+          <h4 class="font-black text-white text-xs uppercase tracking-widest mb-4">Company</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#about"     class="text-gray-400 hover:text-white transition-colors">About</a></li>
+            <li><a href="#whyus"     class="text-gray-400 hover:text-white transition-colors">Why Us</a></li>
+            <li><a href="#team"      class="text-gray-400 hover:text-white transition-colors">Team</a></li>
+            <li><a href="#casestudy" class="text-gray-400 hover:text-white transition-colors">Case Study</a></li>
+            <li><a href="#faq"       class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="font-black text-white text-xs uppercase tracking-widest mb-4">Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><button type="button" onclick="document.getElementById('dlg-agents').showModal()"   class="text-gray-400 hover:text-white transition-colors text-left">AI Agent Engineering</button></li>
+            <li><button type="button" onclick="document.getElementById('dlg-software').showModal()" class="text-gray-400 hover:text-white transition-colors text-left">Software Development</button></li>
+            <li><button type="button" onclick="document.getElementById('dlg-finetune').showModal()" class="text-gray-400 hover:text-white transition-colors text-left">LLM Fine-Tuning</button></li>
+            <li><button type="button" onclick="document.getElementById('dlg-aidev').showModal()"    class="text-gray-400 hover:text-white transition-colors text-left">AI Software Development</button></li>
+            <li><a href="#services" class="gradient-text font-semibold">All services →</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="flex items-center gap-8 text-gray-500 text-sm">
-        <a href="#about"     class="hover:text-white transition-colors">About</a>
-        <a href="#services"  class="hover:text-white transition-colors">Services</a>
-        <a href="#casestudy" class="hover:text-white transition-colors">Case Study</a>
-        <a href="#contact"   class="hover:text-white transition-colors">Contact</a>
+      <!-- Bottom bar -->
+      <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© <span id="copyright-year">2026</span> KAazi Solutions. All rights reserved.</p>
+        <a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm font-semibold">Start a conversation →</a>
       </div>
-
-      <p class="text-gray-600 text-sm">© <span id="copyright-year">2026</span> KAazi Solutions. All rights reserved.</p>
     </div>
   </footer>
 
