@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.log
+
+# Stray photos accidentally dropped into the project root
+20251130_121318000_iOS*.jpg
