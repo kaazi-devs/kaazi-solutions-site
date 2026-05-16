@@ -279,12 +279,12 @@
       <!-- Stats strip -->
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 fade-up d4">
         <div class="text-center">
-          <div class="text-4xl md:text-5xl font-black gradient-text">2,000+</div>
+          <div class="text-4xl md:text-5xl font-black gradient-text" data-counter-target="2000" data-counter-suffix="+">0</div>
           <div class="text-gray-400 text-sm font-medium mt-1">AI Servers Networked</div>
         </div>
         <div class="w-px h-10 bg-gray-200 hidden md:block"></div>
         <div class="text-center">
-          <div class="text-4xl md:text-5xl font-black gradient-text">100%</div>
+          <div class="text-4xl md:text-5xl font-black gradient-text" data-counter-target="100" data-counter-suffix="%">0</div>
           <div class="text-gray-400 text-sm font-medium mt-1">AI-Powered Solutions</div>
         </div>
         <div class="w-px h-10 bg-gray-200 hidden md:block"></div>
@@ -948,6 +948,33 @@
 
     // Footer year — always current
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    // Animated counters in the hero (counts from 0 to target on scroll-in)
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const counters = document.querySelectorAll('[data-counter-target]');
+
+      const animate = (el) => {
+        const target = parseInt(el.dataset.counterTarget, 10);
+        const suffix = el.dataset.counterSuffix || '';
+        if (reduce) { el.textContent = target.toLocaleString() + suffix; return; }
+        const duration = 1800;
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+          el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target.toLocaleString() + suffix;
+        };
+        requestAnimationFrame(step);
+      };
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.4 });
+      counters.forEach((c) => io.observe(c));
+    })();
 
     // Close service modals when clicking the backdrop (outside the inner content)
     document.querySelectorAll('dialog.dlg').forEach(d => {
