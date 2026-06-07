@@ -916,7 +916,7 @@
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ── STATUS BAR ──────────────────────────────────────── -->
-  <div class="statusbar" role="status" aria-live="off">
+  <div class="statusbar">
     <div class="statusbar-inner mono">
       <span class="status-item"><span class="status-dot" aria-hidden="true"></span>SYS / LIVE</span>
       <span class="status-sep" aria-hidden="true">·</span>
@@ -963,8 +963,10 @@
     </div>
   </nav>
 
+  <main id="main">
+
   <!-- ── HERO ────────────────────────────────────────────── -->
-  <section id="main" class="hero">
+  <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-text">
@@ -1026,13 +1028,13 @@
 
               <!-- Reusable drive bay (NVMe 2.5" hot-swap) -->
               <g id="bay">
-                <rect width="17" height="60" rx="0.5" fill="url(#bayFill)" stroke="rgba(237, 236, 230, 0.18)" stroke-width="0.4" />
+                <rect width="17" height="50" rx="0.5" fill="url(#bayFill)" stroke="rgba(237, 236, 230, 0.18)" stroke-width="0.4" />
                 <rect x="1.2" y="1.2" width="2" height="1.4" fill="rgba(140, 230, 160, 1)" />
                 <line x1="2" y1="7" x2="15" y2="7" stroke="rgba(237, 236, 230, 0.08)" stroke-width="0.3" />
                 <line x1="2" y1="10.5" x2="15" y2="10.5" stroke="rgba(237, 236, 230, 0.08)" stroke-width="0.3" />
                 <line x1="2" y1="14" x2="15" y2="14" stroke="rgba(237, 236, 230, 0.08)" stroke-width="0.3" />
                 <line x1="2" y1="17.5" x2="15" y2="17.5" stroke="rgba(237, 236, 230, 0.08)" stroke-width="0.3" />
-                <rect x="6.5" y="54" width="4" height="2.5" rx="0.3" fill="rgba(237, 236, 230, 0.18)" />
+                <rect x="6.5" y="44" width="4" height="2.5" rx="0.3" fill="rgba(237, 236, 230, 0.18)" />
               </g>
 
               <!-- Switch port LED -->
@@ -1703,7 +1705,7 @@
           <div class="person-avatar"><img src="images/ayobami.jpg" alt="Ayobami Awoyinfa" width="72" height="72" loading="lazy" decoding="async" /></div>
           <div class="person-role mono">CEO</div>
           <h3>Ayobami Awoyinfa</h3>
-          <p>12+ years in data centers, networking, and AI infrastructure program operations. Sets direction across the rack-to-agent stack.</p>
+          <p>12+ years in data centers, networking, and AI infrastructure program operations. Sets direction across the rack-to-agent stack. Building the AI infrastructure layer Africa and the world needs — GPU clusters, models, agents, full stack.</p>
         </div>
         <div class="person">
           <div class="person-avatar mono">TO</div>
@@ -1820,6 +1822,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ── FOOTER ──────────────────────────────────────────── -->
   <footer class="footer">
