@@ -19,7 +19,8 @@
   <meta property="og:site_name" content="KAazi Solutions" />
   <meta property="og:title" content="KAazi Solutions — Compute for AI" />
   <meta property="og:description" content="GPU infrastructure and the AI platform, models, and agents that run on top of it. Built for production." />
-  <meta property="og:image" content="https://kaazidevs.com/images/og-image.svg" />
+  <meta property="og:image" content="https://kaazidevs.com/images/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="KAazi Solutions — Compute for AI." />
@@ -28,7 +29,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KAazi Solutions — Compute for AI" />
   <meta name="twitter:description" content="GPU infrastructure and the AI platform, models, and agents that run on top of it." />
-  <meta name="twitter:image" content="https://kaazidevs.com/images/og-image.svg" />
+  <meta name="twitter:image" content="https://kaazidevs.com/images/og-image.png" />
+  <meta name="twitter:image:alt" content="KAazi Solutions — Compute for AI." />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
@@ -1887,14 +1889,16 @@
     })();
 
     // Footer year — always current
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    var yearEl = document.getElementById('copyright-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Nav scroll shadow
     window.addEventListener('scroll', function () {
       var nav = document.getElementById('navbar');
+      if (!nav) return;
       if (window.scrollY > 8) nav.style.borderBottomColor = 'rgba(237,236,230,0.16)';
       else nav.style.borderBottomColor = '';
-    });
+    }, { passive: true });
 
     // Mobile menu
     var mobToggle = document.getElementById('mob-toggle');

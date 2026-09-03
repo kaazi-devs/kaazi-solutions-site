@@ -2,6 +2,7 @@
   "name": "kaazi-solutions-site",
   "version": "1.0.0",
   "description": "Marketing site for KAazi Solutions, served at kaazidevs.com.",
+  "homepage": "https://kaazidevs.com/",
   "private": true,
   "scripts": {
     "build": "tailwindcss -i src/input.css -o styles.css --minify",
@@ -9,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaazi-devs/kaazi-solutions-site.git"
+    "url": "git+https://github.com/Dev-Gashap/kaazi-solutions-site.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
